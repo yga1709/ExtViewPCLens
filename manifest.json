@@ -1,0 +1,31 @@
+{
+  "name": "lensExt",
+  "description": "PClens 表示拡張機能",
+  "version": "1.0",
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["./scripts/background.js"]
+  },
+  "permissions": [
+    "tabs",
+    "https://*/*",
+    "downloads",
+    "notifications",
+    "background"
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "./scripts/lib/jquery-2.0.2.min.js",
+        "./scripts/firebase-app.js",
+        "./scripts/firebase-firestore.js",
+        "./scripts/pclens.js"
+      ]
+    }
+  ]
+}
