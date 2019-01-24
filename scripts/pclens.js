@@ -11,16 +11,100 @@ firebase.initializeApp(config);
 var db = firebase.firestore();
 const settings = { timestampsInSnapshots: true };
 db.settings(settings);
+
+getParseURL = address => {
+  let parse = address
+    .replace(/\s+/g, "")
+    .replace("http://", "")
+    .replace("https://", "")
+    .replace(/\/$/, "");
+  let deleteString;
+  let resultUrl;
+  if (parse.indexOf("?") >= 0) {
+    deleteString = parse.substring(parse.indexOf("?"), parse.length);
+    resultUrl = parse.replace(deleteString, "");
+  } else {
+    resultUrl = parse;
+  }
+  return resultUrl;
+};
+
+viewComment = (comment, color, size) => {
+  let weight = size == "60px" ? "bold" : "normal";
+  let css = {
+    color: color,
+    "font-weight": weight,
+    "font-size": size,
+    margin: 0,
+    padding: 0,
+    position: "fixed",
+    overflow: "visible",
+    "background-color": "transparent",
+    "line-height": 1,
+    "white-space": "nowrap",
+    "user-select": "none",
+    "-webkit-user-select": "none"
+  };
+  if (comment == null) {
+    return;
+  }
+
+  let htmlDiv = $("<div>")
+    .css(css)
+    .text(comment)
+    .hide()
+    .appendTo("body");
+
+  let width = document.documentElement.clientWidth;
+  let height = document.documentElement.clientHeight;
+  let pageWidth = htmlDiv.width();
+  let pageHeight = htmlDiv.height();
+
+  let top = parseInt(Math.random() * (height - 100));
+  for (let i = 0; i < 10; i++) {
+    if (top + 20 >= oldTopRandom && top - 20 <= oldTopRandom) {
+      //前回から上下20以内の変動だとコメントの位置が被るので再度乱数生成
+      top = parseInt(Math.random() * (height - 100));
+    } else {
+      break;
+    }
+  }
+  oldTopRandom = top; //乱数の被りがなくなったので記録
+  console.log(top);
+
+  let speed = 5000 + width - 30 * comment.length;
+  if (speed <= 0) speed = 3000;
+
+  htmlDiv.css({ left: width, top: top });
+  htmlDiv.show().animate(
+    {
+      left: -pageWidth
+    },
+    {
+      duration: speed,
+      easing: "linear",
+      complete: function() {
+        $(this).remove();
+      }
+    }
+  );
+};
+
+escape = content => {
+  return content
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+};
+
 var scroll = 0;
 var url = null;
 var comments = {};
 var ids = [];
-var fullURL = location.href;
-var currentURL = fullURL
-  .replace(/\s+/g, "")
-  .replace("http://", "")
-  .replace("https://", "")
-  .replace(/\/$/, "");
+var currentURL = getParseURL(location.href);
+var oldTopRandom = 0;
 
 db.collection("pclens")
   .where("url", "==", currentURL)
@@ -92,62 +176,3 @@ window.addEventListener(
   },
   false
 );
-
-viewComment = (comment, color, size) => {
-  let weight = size == "60px" ? "bold" : "normal";
-  let css = {
-    color: color,
-    "font-weight": weight,
-    "font-size": size,
-    margin: 0,
-    padding: 0,
-    position: "fixed",
-    overflow: "visible",
-    "background-color": "transparent",
-    "line-height": 1,
-    "white-space": "nowrap",
-    "user-select": "none",
-    "-webkit-user-select": "none"
-  };
-  if (comment == null) {
-    return;
-  }
-
-  let htmlDiv = $("<div>")
-    .css(css)
-    .text(comment)
-    .hide()
-    .appendTo("body");
-
-  let width = document.documentElement.clientWidth;
-  let height = document.documentElement.clientHeight;
-  let pageWidth = htmlDiv.width();
-  let pageHeight = htmlDiv.height();
-
-  let top = parseInt(Math.random() * (height - 100));
-  let speed = 5000 + width - 30 * comment.length;
-  if (speed <= 0) speed = 3000;
-
-  htmlDiv.css({ left: width, top: top });
-  htmlDiv.show().animate(
-    {
-      left: -pageWidth
-    },
-    {
-      duration: speed,
-      easing: "linear",
-      complete: function() {
-        $(this).remove();
-      }
-    }
-  );
-};
-
-escape = content => {
-  return content
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-};
