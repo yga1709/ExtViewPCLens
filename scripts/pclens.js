@@ -62,7 +62,8 @@ viewComment = (comment, color, size) => {
 
   let top = parseInt(Math.random() * (height - 100));
   for (let i = 0; i < 10; i++) {
-    if (top === oldTopRandom) {
+    if (top + 20 >= oldTopRandom && top - 20 <= oldTopRandom) {
+      //前回から上下20以内の変動だとコメントの位置が被るので再度乱数生成
       top = parseInt(Math.random() * (height - 100));
     } else {
       break;
