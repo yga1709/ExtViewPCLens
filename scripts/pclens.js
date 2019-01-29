@@ -183,7 +183,7 @@ window.addEventListener(
       }
     }
     chrome.runtime.sendMessage(
-      { scrollLevel: scroll, currentURL: currentURL },
+      { scrollLevel: scroll, currentURL: currentURL, mode: mode },
       response => {
         console.log("message sent");
       }
