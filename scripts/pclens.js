@@ -171,7 +171,7 @@ window.addEventListener(
       }
     }
     scroll = nowScroll;
-    console.log("スクロール量でえええええｓ" + scroll);
+    console.log("Scroll Level" + scroll);
     for (id of ids) {
       if (scroll === Math.round(comments[id].scroll / 100) * 100) {
         console.log(comments[id]);
