@@ -12,6 +12,23 @@ var db = firebase.firestore();
 const settings = { timestampsInSnapshots: true };
 db.settings(settings);
 
+var mode = true;
+modeCheck = () => {
+  try {
+    chrome.storage.local.get("ext", function(data) {
+      console.log(data.ext);
+      if (data.ext == true) {
+        mode = true;
+      } else {
+        mode = false;
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    mode = true;
+  }
+};
+
 getParseURL = address => {
   let parse = address
     .replace(/\s+/g, "")
@@ -30,6 +47,10 @@ getParseURL = address => {
 };
 
 viewComment = (comment, color, size) => {
+  modeCheck();
+  if (!mode) {
+    return 0;
+  }
   let weight = size == "60px" ? "bold" : "normal";
   let css = {
     color: color,
@@ -106,6 +127,7 @@ var ids = [];
 var currentURL = getParseURL(location.href);
 var oldTopRandom = 0;
 
+modeCheck();
 db.collection("pclens")
   .where("url", "==", currentURL)
   .onSnapshot(snapshot => {

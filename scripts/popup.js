@@ -7,3 +7,15 @@ main = () => {
   console.log(showMessage);
 };
 main();
+
+document.getElementById("TrueExtSwc").onclick = () => {
+  chrome.storage.local.set({ ext: true }, data => {
+    console.log("ONにしました");
+  });
+};
+
+document.getElementById("FalseExtSwc").onclick = () => {
+  chrome.storage.local.set({ ext: false }, function() {
+    console.log("OFFにします");
+  });
+};
