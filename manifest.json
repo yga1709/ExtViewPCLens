@@ -6,6 +6,9 @@
   "background": {
     "scripts": ["./scripts/background.js"]
   },
+  "icons": {
+    "128": "icon.png"
+  },
   "permissions": [
     "tabs",
     "https://*/*",
