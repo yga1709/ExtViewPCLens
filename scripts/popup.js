@@ -11,18 +11,18 @@ main = () => {
   }
   let showMessage = `URL:${currentURL} <br>数値:${scrollLevel} mode:${modeStr}`;
   document.getElementById("view").innerHTML = showMessage;
-  console.log(showMessage);
+  //console.log(showMessage);
 };
 main();
 
 document.getElementById("TrueExtSwc").onclick = () => {
   chrome.storage.local.set({ ext: true }, data => {
-    console.log("ONにしました");
+    //console.log("ONにしました");
   });
 };
 
 document.getElementById("FalseExtSwc").onclick = () => {
   chrome.storage.local.set({ ext: false }, function() {
-    console.log("OFFにします");
+    //console.log("OFFにします");
   });
 };
