@@ -16,7 +16,7 @@ var mode = true;
 modeCheck = () => {
   try {
     chrome.storage.local.get("ext", function(data) {
-      console.log(data.ext);
+      //console.log(data.ext);
       if (data.ext == true) {
         mode = true;
       } else {
@@ -24,7 +24,7 @@ modeCheck = () => {
       }
     });
   } catch (e) {
-    console.log(e);
+    //console.log(e);
     mode = true;
   }
 };
@@ -99,7 +99,7 @@ viewComment = (comment, name, color, size) => {
     }
   }
   oldTopRandom = top; //乱数の被りがなくなったので記録
-  console.log(top);
+  //console.log(top);
 
   let speed = 5000 + width - 30 * comment.length;
   if (speed <= 0) speed = 3000;
@@ -141,7 +141,7 @@ db.collection("pclens")
   .onSnapshot(snapshot => {
     snapshot.docChanges().forEach(change => {
       if (change.type === "added") {
-        console.log(change.doc.data());
+        //console.log(change.doc.data());
         comments[change.doc.id] = {
           comment: escape(change.doc.data().comment),
           scroll: change.doc.data().scroll,
@@ -177,7 +177,7 @@ window.addEventListener(
           nowScroll > Math.round(comments[id].scroll / 100) * 100 &&
           scroll < Math.round(comments[id].scroll / 100) * 100
         ) {
-          console.log(comments[id]);
+          //console.log(comments[id]);
           viewComment(
             comments[id].comment,
             comments[id].name,
@@ -188,10 +188,10 @@ window.addEventListener(
       }
     }
     scroll = nowScroll;
-    console.log("Scroll Level" + scroll);
+    //console.log("Scroll Level" + scroll);
     for (id of ids) {
       if (scroll === Math.round(comments[id].scroll / 100) * 100) {
-        console.log(comments[id]);
+        //console.log(comments[id]);
         viewComment(
           comments[id].comment,
           comments[id].name,
@@ -203,7 +203,7 @@ window.addEventListener(
     chrome.runtime.sendMessage(
       { scrollLevel: scroll, currentURL: currentURL, mode: mode },
       response => {
-        console.log("message sent");
+        //console.log("message sent");
       }
     );
   },
