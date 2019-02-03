@@ -39,11 +39,12 @@ getParseURL = address => {
   return parse;
 };
 
-viewComment = (comment, color, size) => {
+viewComment = (comment, name, color, size) => {
   modeCheck();
-  if (!mode) {
+  if (!mode || comment == null) {
     return 0;
   }
+  let appendName = `${comment}<span class="pclensname">${name}</span>`;
   let weight = size == "60px" ? "bold" : "normal";
   let css = {
     color: color,
@@ -59,15 +60,29 @@ viewComment = (comment, color, size) => {
     "user-select": "none",
     "-webkit-user-select": "none"
   };
-  if (comment == null) {
-    return;
-  }
+
+  let nameCss = {
+    color: color,
+    "font-size": "20px",
+    margin: 0,
+    padding: 0,
+    position: "absolute",
+    bottom: 0,
+    overflow: "visible",
+    "background-color": "transparent",
+    "line-height": 1,
+    "white-space": "nowrap",
+    "user-select": "none",
+    "-webkit-user-select": "none"
+  };
 
   let htmlDiv = $("<div>")
     .css(css)
-    .text(comment)
+    .html(appendName)
     .hide()
     .appendTo("body");
+
+  let nameClass = $(".pclensname").css(nameCss);
 
   let width = document.documentElement.clientWidth;
   let height = document.documentElement.clientHeight;
@@ -140,6 +155,7 @@ db.collection("pclens")
       if (change.doc.data().scroll <= scroll) {
         viewComment(
           escape(change.doc.data().comment),
+          change.doc.data().name,
           change.doc.data().color,
           change.doc.data().size
         );
@@ -164,6 +180,7 @@ window.addEventListener(
           console.log(comments[id]);
           viewComment(
             comments[id].comment,
+            comments[id].name,
             comments[id].color,
             comments[id].size
           );
@@ -177,6 +194,7 @@ window.addEventListener(
         console.log(comments[id]);
         viewComment(
           comments[id].comment,
+          comments[id].name,
           comments[id].color,
           comments[id].size
         );
