@@ -2,14 +2,139 @@
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="./popup.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui-css@2.4.1/semantic.min.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui-css@2.4.1/semantic.min.css"
+    />
 
+    <meta charset="UTF-8" />
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css"
+    />
+
+    <!-- UIkit JS -->
+    <script type="text/javascript" src="./scripts/firebase-app.js"></script>
+    <script
+      type="text/javascript"
+      src="./scripts/firebase-firestore.js"
+    ></script>
+    <script type="text/javascript" src="./scripts/firebase-auth.js"></script>
+
+    <style>
+      ul {
+        list-style: none;
+      }
+    </style>
+
+    <title>PClens</title>
+  </head>
 
   <body>
     <div id="view"></div>
-    <input type="button" id="TrueExtSwc" value="on">
-    <input type="button" id="FalseExtSwc" value="off">
+    <input type="button" id="TrueExtSwc" value="on" />
+    <input type="button" id="FalseExtSwc" value="off" />
+    <nav class="uk-navbar-container uk-margin" uk-navbar>
+      <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo">P.C.Lens</a>
+
+        <ul class="uk-navbar-nav">
+          <li><a href="./usepclens.html">使い方</a></li>
+        </ul>
+
+        <ul class="uk-navbar-nav">
+          <li>
+            <a href="https://github.com/yga1709/ExtViewPCLens">拡張機能</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <span id="checkURL">
+      URL<br /><input
+        v-model="message"
+        placeholder="URLを入力…"
+        type="text"
+        class="uk-input uk-width-1-2"
+        style="width:300px"
+        id="url"
+      /><br />
+    </span>
+    名前<br /><input
+      type="text"
+      width="100"
+      style="width:100px"
+      class="uk-input uk-width-1-2"
+      id="name"
+    /><br />
+    コメント<br /><input
+      type="text"
+      style="width:300px"
+      class="uk-input"
+      id="comment"
+    /><br />
+    <form id="color">
+      <input
+        name="colorList"
+        type="radio"
+        class="uk-radio"
+        value="#000000"
+        style="background-color: #000000"
+        checked
+      />黒
+      <input
+        name="colorList"
+        type="radio"
+        class="uk-radio"
+        value="#ffffff"
+        style="background-color: rgb(200, 200, 200)"
+      />白
+      <input
+        name="colorList"
+        type="radio"
+        class="uk-radio"
+        value="#ff0000"
+        style="background-color: #ff0000"
+      />赤
+      <input
+        name="colorList"
+        type="radio"
+        class="uk-radio"
+        value="#0000ff"
+        style="background-color: #0000ff"
+      />青
+      <input
+        name="colorList"
+        type="radio"
+        class="uk-radio"
+        value="#00ff00"
+        style="background-color: #00ff00"
+      />緑
+    </form>
+    <form id="size">
+      <input
+        name="sizeList"
+        type="radio"
+        class="uk-radio"
+        value="40px"
+        checked
+      />通常
+      <input name="sizeList" type="radio" class="uk-radio" value="60px" />大
+      <input name="sizeList" type="radio" class="uk-radio" value="20px" />小
+    </form>
+    <form id="position">
+      <input name="posiNum" type="number" id="posiNum" style="width: 100px" />
+    </form>
+
+    <input
+      type="button"
+      class="uk-button uk-button-primary"
+      id="send"
+      value="送信"
+    />
+    <div id="result"></div>
     <script type="text/javascript" src="./scripts/popup.js"></script>
-    <iframe src="https://pc-lens.firebaseapp.com/" style="border: 0; width: 700px; height: 470px; margin:0; padding: 0;"  scrolling="no" frameborder="0"></iframe>
   </body>
 </html>

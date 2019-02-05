@@ -30,6 +30,7 @@
         "./scripts/lib/jquery-2.0.2.min.js",
         "./scripts/firebase-app.js",
         "./scripts/firebase-firestore.js",
+        "./scripts/firebase-auth.js",
         "./scripts/pclens.js"
       ]
     }
