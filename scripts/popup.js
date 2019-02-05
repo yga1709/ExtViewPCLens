@@ -79,10 +79,10 @@ document.getElementById("send").onclick = () => {
   const viewTime = getTime();
   const name = document.getElementById("name").value;
   const comment = document.getElementById("comment").value;
-  const url = document.getElementById("url");
+  const url = document.getElementById("url").value;
   const getColor = document.getElementById("color");
   const getSize = document.getElementById("size");
-  const userPosition = document.getElementById("posiNum");
+  const userPosition = document.getElementById("posiNum").value;
   const color = getColor.colorList.value;
   const size = getSize.sizeList.value;
 
