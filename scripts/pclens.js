@@ -134,6 +134,10 @@ var ids = [];
 var currentURL = getParseURL(location.href);
 var oldTopRandom = 0;
 
+window.onload = () => {
+  currentURL = getParseURL(location.href);
+};
+
 modeCheck();
 db.collection("pclens")
   .where("url", "==", currentURL)
