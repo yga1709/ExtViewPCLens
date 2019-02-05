@@ -162,6 +162,16 @@ db.collection("pclens")
     });
   });
 
+window.onload = () => {
+  currentURL = getParseURL(location.href);
+  chrome.runtime.sendMessage(
+    { scrollLevel: scroll, currentURL: currentURL, mode: mode },
+    response => {
+      //console.log("message sent");
+    }
+  );
+};
+
 window.addEventListener(
   "mousewheel",
   function(e) {
