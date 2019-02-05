@@ -62,7 +62,6 @@ viewComment = (comment, name, color, size) => {
   };
 
   let nameCss = {
-    color: color,
     "font-size": "20px",
     margin: 0,
     padding: 0,
