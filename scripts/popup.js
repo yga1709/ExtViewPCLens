@@ -94,10 +94,10 @@ document.getElementById("send").onclick = () => {
     .add({
       name: name,
       comment: comment,
-      url: url.value,
+      url: url,
       color: color,
       size: size,
-      scroll: userPosition.value,
+      scroll: userPosition,
       userID: uid,
       viewTime: viewTime,
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
