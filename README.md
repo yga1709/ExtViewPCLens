@@ -36,10 +36,10 @@ Release から xpi ファイルをダウンロードし、Firefox のアドオ�
 
 ## アップデート
 
-Ver 1.1.12 Popup.html のレイアウト修正  
-Ver 1.1.1 Firefox 版 バグ修正  
-Ver 1.1 Firefox 対応  
-Ver 1.0 リリースバージョン
+- Ver 1.1.2 Popup.html のレイアウト修正
+- Ver 1.1.1 Firefox 版 バグ修正
+- Ver 1.1.0 Firefox 対応
+- Ver 1.0.0 リリースバージョン
 
 ## LICENSE
 
