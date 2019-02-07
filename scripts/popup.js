@@ -1,6 +1,7 @@
 var bg = chrome.extension.getBackgroundPage();
 
 main = () => {
+  userAuth();
   let scrollLevel = bg.scrollLevel;
   let currentURL = bg.currentURL;
   let mode = bg.mode;
@@ -44,25 +45,27 @@ var isAnonymous;
 var uid;
 var oldSendTIme = null;
 
-firebase
-  .auth()
-  .signInAnonymously()
-  .catch(error => {
-    // Handle Errors here.
-    let errorCode = error.code;
-    let errorMessage = error.message;
-    // ...
-    console.log(errorCode, errorMessage);
-  });
+userAuth = () => {
+  firebase
+    .auth()
+    .signInAnonymously()
+    .catch(error => {
+      // Handle Errors here.
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      // ...
+      console.log(errorCode, errorMessage);
+    });
 
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    // User is signed in.
-    isAnonymous = user.isAnonymous;
-    uid = user.uid;
-    // ...
-  }
-});
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      // User is signed in.
+      isAnonymous = user.isAnonymous;
+      uid = user.uid;
+      // ...
+    }
+  });
+};
 
 window.onload = () => {
   main();
