@@ -70,6 +70,13 @@ window.onload = () => {
   url.value = bg.currentURL;
   const userPosition = document.getElementById("posiNum");
   userPosition.value = Math.round(Number(bg.scrollLevel) / 10) * 10;
+  //名前を記録する
+  chrome.storage.local.get("name", function(data) {
+    //console.log(data.name);
+    if (data.name != "") {
+      document.getElementById("name").value = data.name;
+    }
+  });
 };
 
 document.getElementById("send").onclick = () => {
@@ -109,6 +116,9 @@ document.getElementById("send").onclick = () => {
       let sendDate = new Date();
       oldSendTIme = sendDate.getTime();
       document.getElementById("comment").value = "";
+      chrome.storage.local.set({ name: name }, function() {
+        //console.log("名前を記録しました。");
+      });
     })
     .catch(function(error) {
       console.error("Error adding document: ", error);
