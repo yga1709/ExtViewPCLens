@@ -134,6 +134,10 @@ var ids = [];
 var currentURL = getParseURL(location.href);
 var oldTopRandom = 0;
 
+window.onload = () => {
+  currentURL = getParseURL(location.href);
+};
+
 modeCheck();
 db.collection("pclens")
   .where("url", "==", currentURL)
@@ -167,7 +171,7 @@ window.onload = () => {
   chrome.runtime.sendMessage(
     { scrollLevel: scroll, currentURL: currentURL, mode: mode },
     response => {
-      //console.log("message sent");
+      console.log("message sent");
     }
   );
 };

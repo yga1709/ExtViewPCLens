@@ -154,13 +154,15 @@ resultMessage = (check, message) => {
       <a class="uk-alert-close" uk-close></a>
       <p>${message}</p>
     </div>`;
-    resultMsg.innerHTML = html;
+    resultMsg.textContent = "";
+    resultMsg.insertAdjacentHTML("afterbegin", html);
   } else {
     let html = `<div v-else="error" class="uk-alert-danger" uk-alert>
       <a class="uk-alert-close" uk-close></a>
      <p>${message}</p>
     </div>`;
-    resultMsg.innerHTML = html;
+    resultMsg.textContent = "";
+    resultMsg.insertAdjacentHTML("afterbegin", html);
   }
 };
 
