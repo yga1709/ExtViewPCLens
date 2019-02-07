@@ -177,7 +177,7 @@ window.onload = () => {
 };
 
 window.addEventListener(
-  "mousewheel",
+  "DOMMouseScroll",
   function(e) {
     let nowScroll = Math.round(window.pageYOffset / 100) * 100;
     //前回と同じスクロール量の場合（微差のスクロール）はコメント表示の重複を防ぐため反応しない
