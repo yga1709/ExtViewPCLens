@@ -80,7 +80,7 @@ document.getElementById("send").onclick = () => {
     return 0;
   }
   const viewTime = getTime();
-  const name = document.getElementById("name").value;
+  const nameElm = document.getElementById("name").value;
   const comment = document.getElementById("comment").value;
   const url = document.getElementById("url").value;
   const getColor = document.getElementById("color");
@@ -88,6 +88,7 @@ document.getElementById("send").onclick = () => {
   const userPosition = document.getElementById("posiNum").value;
   const color = getColor.colorList.value;
   const size = getSize.sizeList.value;
+  const name = nameElm === "" ? "名無しさん" : nameElm;
 
   if (!errorCheck(name, comment, url)) {
     return 0;
@@ -119,11 +120,11 @@ document.getElementById("send").onclick = () => {
 };
 
 errorCheck = (name, comment, url) => {
-  if (oldSendTIme != null && !checkInterval()) {
+  if (oldSendTIme !== null && !checkInterval()) {
     resultMessage(false, "連続してコメントできません。10秒お待ちください。");
     return false;
   }
-  if (name === "" || comment === "" || url === "") {
+  if (comment === "" || url === "") {
     resultMessage(false, "必要事項が入力されていません。");
     return false;
   }
