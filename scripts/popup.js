@@ -11,7 +11,7 @@ main = () => {
     modeStr = "off";
   }
   let showMessage = `URL:${currentURL} <br>数値:${scrollLevel} mode:${modeStr}`;
-  document.getElementById("view").innerHTML = showMessage;
+  document.getElementById("view").insertAdjacentHTML("afterbegin", showMessage);
   //console.log(showMessage);
 };
 
