@@ -14,7 +14,7 @@ git clone https://github.com/yga1709/ExtViewPCLens
 ```
 
 もしくは上記 Clone or Download から ZIP 形式でダウンロード、解凍してください。  
-その後、Chrome のアドレスバーに「chrome://extensions」と入力し拡張機能管理画面を出したのち、右上のデベロッパーモードにチェックを入れ当拡張機能をドラッグ＆ドロップでインストールが完了します。
+その後、Chrome のアドレスバーに `chrome://extensions` と入力し拡張機能管理画面を出したのち、右上のデベロッパーモードにチェックを入れ当拡張機能をドラッグ＆ドロップでインストールが完了します。
 
 ### Firefox
 
@@ -36,10 +36,10 @@ Release から xpi ファイルをダウンロードし、Firefox のアドオ�
 
 ## アップデート
 
-- Ver 1.1.2 Popup.html のレイアウト修正
-- Ver 1.1.1 Firefox 版 バグ修正
-- Ver 1.1.0 Firefox 対応
-- Ver 1.0.0 リリースバージョン
+- **Ver 1.1.2** Popup.html のレイアウト修正
+- **Ver 1.1.1** Firefox 版 バグ修正
+- **Ver 1.1.0** Firefox 対応
+- **Ver 1.0.0** リリースバージョン
 
 ## LICENSE
 
