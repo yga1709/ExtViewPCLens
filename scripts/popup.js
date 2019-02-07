@@ -76,7 +76,7 @@ window.onload = () => {
   //名前を記録する
   chrome.storage.local.get("name", function(data) {
     //console.log(data.name);
-    if (data.name != "") {
+    if (data.name != undefined && data.name != "") {
       document.getElementById("name").value = data.name;
     }
   });

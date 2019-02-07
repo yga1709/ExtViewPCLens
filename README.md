@@ -37,6 +37,7 @@ Release から xpi ファイルをダウンロードし、Firefox のアドオ�
 
 ## アップデート
 
+- **Ver 1.1.3** Popup.html の名前に入力されたデータを保持するようになりました
 - **Ver 1.1.2** Popup.html のレイアウト修正
 - **Ver 1.1.1** Firefox 版 バグ修正
 - **Ver 1.1.0** Firefox 対応
