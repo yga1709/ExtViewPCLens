@@ -33,7 +33,8 @@ ajax による画面遷移には対応していませんので、リロードし
 
 ## アップデート
 
-Ver 1.1.1 Firefox 版 バグ修正
+Ver 1.1.12 Popup.html のレイアウト修正  
+Ver 1.1.1 Firefox 版 バグ修正  
 Ver 1.1 Firefox 対応  
 Ver 1.0 リリースバージョン
 
