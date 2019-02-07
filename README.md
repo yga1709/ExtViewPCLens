@@ -42,6 +42,11 @@ Release から xpi ファイルをダウンロードし、Firefox のアドオ�
 - **Ver 1.1.0** Firefox 対応
 - **Ver 1.0.0** リリースバージョン
 
+## 今後追加予定の機能
+
+- 名前の記憶機能
+- スタンプ機能等
+
 ## LICENSE
 
 MIT License
