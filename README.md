@@ -3,7 +3,8 @@
 ## 概要
 
 うぇぶコメント(https://pc-lens.firebaseapp.com/) のコメントを取得、投稿する機能を実装しています。  
-スクロール量と URL をコピペして使用してください。
+スクロール量と URL をコピペして使用してください。  
+![image](https://user-images.githubusercontent.com/41358463/52452444-4bde9080-2b86-11e9-8ba9-42b8583343a8.PNG)
 
 ## インストール方法
 
